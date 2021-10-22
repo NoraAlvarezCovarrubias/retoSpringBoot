@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TraderService {
@@ -24,6 +25,10 @@ public class TraderService {
 
     public Trader getTraderByEmail(String email) {
         return traderRepository.findByEmail(email).orElse(new Trader());
+    }
+    
+    public Optional<Trader> getByEmail(String email) {
+        return traderRepository.findByEmail(email);
     }
 
     public List<Trader> getAllTraders() {
